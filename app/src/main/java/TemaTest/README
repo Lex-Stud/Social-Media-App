@@ -1,0 +1,141 @@
+Aplicatie de socializare:
+
+## Table of Contents
+- Utilizator
+- Postare
+- Comentariu
+
+Clasa Postare a fost gandita ca o subclasa a calsei Utilizator, iar clasa Comentariu ca o subclasa a clasei Postare.
+
+Clasa Comentariu:
+- String text
+- String autor
+- int id
+- ArrayList<String> like_pers: persoanele care au apreciat postare
+
+Constructorul:
+Comentariu(String text, int id, String autor): Creează un nou comentariu cu textul, id-ul și autorul specificate.
+
+Metode:
+getNumarLikeuri(): Returnează numărul de like-uri pe care comentariul le-a primit.
+getAuror(): Returnează autorul comentariului.
+findUserLike(String nume): Verifică dacă un utilizator cu numele specificat a dat like la comentariu.
+addLike(String nume): Adaugă un like de la utilizatorul cu numele specificat.
+removeLike(String nume): Elimină un like de la utilizatorul cu numele specificat.
+getId(): Returnează id-ul comentariului.
+getText(): Returnează textul comentariului.
+getCurrentDateAsString(): Returnează data curentă ca un șir de caractere.
+
+Clasa Persoana:
+
+private int numarLikeuri;
+private String autor;
+private String text;
+private int id;
+private String currentDateAsString = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+private ArrayList<Comentariu> comentarii = new ArrayList<>();
+private ArrayList<String> like_pers = new ArrayList<>();
+
+Constructorul Postare care setaza campurile text, id si autor.
+
+Metode:
+-getAutor(): Returnează autorul postării.
+-getCurrentDateAsString(): Returnează data curentă ca un șir de caractere.
+-getNumarLikeuri(): Returnează numărul de like-uri pe care postarea le-a primit.
+-increaseNumarLikeuri(String nume): Mărește numărul de like-uri adăugând un like de la utilizatorul cu numele specificat.
+-decreaseNumarLikeuri(String nume): Scade numărul de like-uri eliminând un like de la utilizatorul cu numele specificat.
+-findLikeUserPost(String nume): Verifică dacă un utilizator cu numele specificat a dat like la postare.
+-getId(): Returnează ID-ul postării.
+-getText(): Returnează textul postării.
+-addComentariu(Comentariu comentariu): Adaugă un comentariu la postare.
+-find_id_Comment(int id): Găsește autorul unui comentariu după ID-ul acestuia.
+-addLike(int id, String nume): Adaugă un like la un comentariu specificat prin ID și utilizatorul cu numele specificat.
+-removeLike(int id, String nume): Elimină un like de la un comentariu specificat prin ID și utilizatorul cu numele specificat.
+-findUserLike(int id, String nume): Verifică dacă un utilizator cu numele specificat a dat like la un comentariu specificat prin ID.
+-deleteComment(int id): Șterge un comentariu specificat prin ID.
+-afisComentarii(): Afișează informații despre toate comentariile asociate postării.
+-getNumarComentarii(): Returnează numărul de comentarii asociate postării.
+-getNumarLikeuriComentarii(): Returnează suma numărului de like-uri ale tuturor comentariilor asociate postării.
+
+Clasa Utilizator:
+
+Proprietăți
+
+nume: numele utilizatorului
+parola: parola utilizatorului
+postari: o listă de obiecte Postare reprezentând postările utilizatorului
+prieteni: o listă de șiruri de caractere reprezentând prietenii utilizatorului
+numar_urmaritori: un număr întreg reprezentând numărul de urmăritori al utilizatorului
+Constructori
+
+Utilizator(String nume, String parola): creează un nou obiect Utilizator cu numele și parola date.
+Metode
+
+Metodele:
+-getNume(): returnează numele utilizatorului.
+-getPrieteni(): returnează o listă de șiruri de caractere reprezentând prietenii utilizatorului.
+-getParola(): returnează parola utilizatorului.
+-incNrUrmaritori(): incrementează numărul de urmăritori al utilizatorului.
+-getNumarUrmaritori(): returnează numărul de urmăritori al utilizatorului.
+-addPostare(Postare postare): adaugă o nouă postare în lista de postări a utilizatorului.
+-findID(int id): verifică dacă există o postare cu id-ul dat în lista de postări a utilizatorului.
+-add_COMMENT_IN_VEC(int id, Comentariu comentariu): adaugă un nou comentariu la o postare cu id-ul dat.
+-getNumarLikeuri(): returnează numărul total de aprecieri la toate postările și comentariile utilizatorului.
+-deletePostare(int id): șterge o postare cu id-ul dat din lista de postări a utilizatorului.
+-afisPrietenii(): afișează un șir de caractere formatat în stil JSON conținând o listă a prietenilor utilizatorului.
+-afisUrmaritori(String utilizator): returnează numele utilizatorului dacă este urmărit de utilizatorul specificat, în caz contrar returnează null.
+-addPrieten(String prieten): adaugă un nou prieten în lista de prieteni a utilizatorului.
+-deletePrieten(String prieten): șterge un prieten cu numele dat din lista de prieteni a utilizatorului.
+-findPrieten(String prieten): verifică dacă există un prieten cu numele dat în lista de prieteni a utilizatorului.
+-addPostLike(int id, String nume): adaugă o apreciere la o postare cu id-ul dat din partea utilizatorului specificat.
+-deletePostLiked(int id, String nume): elimină o apreciere de la o postare cu id-ul dat din partea utilizatorului specificat.
+-exist_id_comment(int id): returnează un șir de caractere conținând numele utilizatorului și textul unui comentariu cu id-ul dat, dacă există, în caz contrar returnează null.
+-removeComment(int id): șterge un comentariu cu id-ul dat de la una dintre postările utilizatorului.
+-addLike(int id, String nume): adaugă o apreciere la un comentariu cu id-ul dat din partea utilizatorului specificat.
+-removeLike(int id, String nume): elimină o apreciere de la un comentariu cu id-ul dat din partea utilizatorului specificat.
+-findUserLike(int id, String nume): verifică dacă există o apreciere de la utilizatorul specificat la un comentariu cu id-ul dat.
+-afisPostari(): afișează un șir de caractere formatat în stil JSON conținând o listă a postărilor utilizatorului, sortate după dată.
+-afisPostare(int id): afișează un șir de caractere formatat în stil JSON conținând detalii despre o postare cu id-ul dat.
+-afisPostariPrieteni(): afișează un șir de caractere formatat în stil JSON conținând o listă a postărilor tuturor prietenilor utilizatorului, sortate după dată.
+-get_top_5_postari_like(): returnează o listă cu cele mai apreciate 5 postări ale utilizatorului.
+
+Clasa APP
+
+Atributele Statice:
+- `TOtid`: un id unic pentru fiecare postare.
+- `id_com`: un id unic pentru fiecare mesaj.
+- `utilizatori`: un ArrayList cu fiecare utilizator.
+
+Se analizează conținutul variabilei `strings`, iar pentru fiecare caz se asigură corectitudinea datelor de logare și existența parametrilor necesari.
+
+Comenzi:
+- cleanup-all: golește array-ul de utilizatori și setează variabilele `id` cu 1.
+- create-user: creează un utilizator cu numele și parola date ca parametru.
+- create-post: pentru utilizatorul x creează o postare și o adaugă în array-ul de postări.
+- delete-post-by-id: verifică dacă id-ul dat ca parametru există și, în caz afirmativ, șterge postarea din vectorul de postări.
+- unfollow-user-by-username: caută username-ul dat ca parametru și, dacă este găsit, îl elimină din array-ul de prieteni.
+- like-post: caută postarea cu id-ul dat ca parametru și, în caz afirmativ, adaugă numele utilizatorului în vectorul de like_pers.
+- unlike-post: caută numele utilizatorului în vectorul de like_pers al postării cu id-ul dat și, în caz afirmativ, îl elimină.
+- comment-post: se caută postarea cu id-ul dat și, în caz afirmativ, se adaugă un comentariu în vectorul de comentarii al postării.
+- delete-comment-by-id: se caută comentariul cu id-ul dat și, dacă acesta este găsit, se elimină din vectorul de comentarii.
+- get-following: găsește utilizatorul în lista de utilizatori și afișează prietenii săi.
+- get-followers: caută în vectorul de prieteni ai fiecărui utilizator username-ul utilizatorului, iar dacă este găsit, afișează numele utilizatorului.
+- get-most-liked-posts: pentru fiecare utilizator se aleg cele mai apreciate 5 postări, apoi sunt adăugate toate într-un ArrayList care este sortat. Apoi se afișează primele 5.
+- get-most-commented-posts: pentru fiecare utilizator sunt alese primele cele mai comentate postări, după care sunt adăugate toate într-un ArrayList care este sortat. Apoi sunt afișate cele mai comentate 5.
+- like-comment: se caută comentariul cu id-ul dat ca parametru. În caz afirmativ, numele utilizatorului este adăugat în vectorul de like-uri al comentariului.
+- unlike-comment: se caută comentariul cu id-ul dat ca parametru. În caz afirmativ, se verifică existența utilizatorului în vectorul de like-uri, iar dacă este găsit, acesta este eliminat.
+- get-user-posts: se caută utilizatorul în vectorul de utilizatori și, dacă este găsit, sunt afișate postările lui.
+- get-post-details: se caută postarea cu id-ul dat și, dacă este găsită, se afișează detaliile.
+- get-followings-posts: se caută utilizatorul dat ca parametru și afișează postările prietenilor săi.
+- get-most-followed-users: sortează vectorul de utilizatori după numărul de urmăritori, apoi sunt afișați.
+- get-most-liked-users: pentru fiecare utilizator se calculează suma like-urilor din postări și comentarii. Apoi sunt sortați și afișați.
+
+Bonus:
+Ar trebui implementate răspunsuri speciale pentru:
+- gt-most------ dacă nu există niciun utilizator
+
+- Ar trebui un mod mai bun pentru determinarea unui mesaj sau unui comentariu. Este greu de determinat id-ul fiecăruia. Un exeplu ar fi ca fiecare ultilzator sa aiba postarile 
+numerotae de la 1
+-poti comenta poza unui utilizator chiar daca nu il urmaresti. Ar trbui introdusa o metoda de siguranta.
+
+- Daca utilizatorul nu urmareste pe nimeni ar pute fi afisate recomandari.
